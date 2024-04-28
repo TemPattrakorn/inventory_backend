@@ -1,5 +1,31 @@
-const geeting = (name: string) => {
-    console.log(`Hello ${name} from TypeScript.`);
-};
+import * as express from "express"
+import { Request, Response } from "express"
 
-geeting('Temmie');
+// create and setup express app
+const app = express()
+app.use(express.json())
+
+// register routes
+
+app.get("/users", function (req: Request, res: Response) {
+    // here we will have logic to return all users
+})
+
+app.get("/users/:user_id", function (req: Request, res: Response) {
+    // here we will have logic to return user by id
+})
+
+app.post("/users", function (req: Request, res: Response) {
+    // here we will have logic to save a user
+})
+
+app.put("/users/:user_id", function (req: Request, res: Response) {
+    // here we will have logic to update a user by a given user id
+})
+
+app.delete("/users/:user_id", function (req: Request, res: Response) {
+    // here we will have logic to delete a user by a given user id
+})
+
+// start express server
+app.listen(8080)
