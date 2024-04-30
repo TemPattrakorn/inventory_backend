@@ -1,9 +1,9 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-
+import { Request, Response } from 'express';
 @Entity()
 export class Inventory {
 	@PrimaryGeneratedColumn()
-	id: string;
+	id: Number;
 
 	@Column()
 	name: string;
@@ -28,3 +28,4 @@ export class Inventory {
 
 
 }
+
