@@ -3,13 +3,14 @@ import express = require('express');
 import * as bodyParser from 'body-parser';
 import { inventoryRouter } from './routers/inventoryRouter'
 import { AppDataSource } from './data-source';
-import { createInventoryData } from './postgres_init/inventory_init';
+import { requisitionRouter } from './routers/requisitionRouter';
 const app = express();
 const PORT = 3000;
 
 app.use(bodyParser.json());
 
 app.use('/api/v1/inventories', inventoryRouter)
+app.use('/api/v1/requisitions', requisitionRouter)
 AppDataSource.initialize()
 	.then(() => {
 

@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import { Request, Response } from 'express';
+
 @Entity()
 export class Inventory {
 	@PrimaryGeneratedColumn()
