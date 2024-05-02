@@ -4,8 +4,23 @@ import { Requisition } from '../entities/Requisition';
 export class RequisitionService {
 	private requisitionRepository = AppDataSource.getRepository(Requisition);
 
-	async getAllRequisitions(): Promise<Requisition[]> {
-		return await this.requisitionRepository.find();
+	async getAllRequisitions(filters: Record<string, any>): Promise<Requisition[]> {
+
+		let query = this.requisitionRepository.createQueryBuilder('requisition');
+		if (filters.user_id) {
+			query = query.andWhere('requisition.user_id = :user_id', { user_id: Number(filters.user_id) });
+		}
+		if (filters.completedate) {
+			query = query.andWhere('requisition.completedate = :completedate', { completedate: filters.completedate });
+		}
+		if (filters.is_complete) {
+			query = query.andWhere('requisition.is_complete = :is_complete', { is_complete: ((filters.is_complete === 'true') ? true : false) });
+		}
+		if (filters.orderby_field) {
+			query = query.orderBy(`requisition.${filters.orderby_field}`, 'ASC')
+		}
+
+		return await query.getMany();
 	}
 
 	async getRequisitionById(id: Number): Promise<Requisition | undefined> {

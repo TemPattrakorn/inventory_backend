@@ -5,7 +5,8 @@ import { Requisition } from '../entities/Requisition';
 const requisitionService = new RequisitionService();
 
 export const getAllRequisitions = async (req: Request, res: Response) => {
-	const requisitions = await requisitionService.getAllRequisitions();
+	const filters = req.query;
+	const requisitions = await requisitionService.getAllRequisitions(filters);
 	res.send({ success: true, data: requisitions })
 };
 
