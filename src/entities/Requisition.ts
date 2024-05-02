@@ -8,13 +8,13 @@ export class Requisition {
 	@Column()
 	user_id: Number;
 
-	@Column({ type: 'timestamptz' })
-	completedate: Date;
+	@Column({ default: null, nullable: true, type: 'date' })
+	completedate: string;
 
-	@Column()
+	@Column({ nullable: true })
 	description: string;
 
-	@Column()
+	@Column({ default: false })
 	is_complete: Boolean;
 
 }

@@ -8,7 +8,7 @@ export class Inventory {
 	@Column()
 	name: string;
 
-	@Column()
+	@Column({ nullable: true })
 	description: string;
 
 	@Column()
@@ -20,10 +20,10 @@ export class Inventory {
 	@Column()
 	unit: string;
 
-	@Column()
+	@Column({ nullable: true })
 	catagory: string;
 
-	@Column()
+	@Column({ nullable: true })
 	imgpath: string;
 
 
